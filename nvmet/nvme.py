@@ -788,6 +788,7 @@ class ANAGroup(CFSNode):
     '''
 
     MAX_GRPID = 1024
+    DEFAULT_GRPID = 1
 
     def __repr__(self):
         return "<ANA Group %d>" % self.grpid
@@ -850,6 +851,9 @@ class ANAGroup(CFSNode):
         d['grpid'] = self.grpid
         return d
 
+    def delete(self):
+        if self.grpid != self.DEFAULT_GRPID:
+            super().delete() 
 
 class Host(CFSNode):
     '''
